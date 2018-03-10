@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="application">
+	<div v-if="user.age > 18">
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta, iusto mollitia nisi quibusdam quisquam sequi. Assumenda expedita explicabo, facilis fuga iure, laborum mollitia nihil nulla
+		quam qui reprehenderit sint unde?
+	</div>
+	<div v-else-if="user.age > 16 && user.age < 18">
+		Only with parents
+	</div>
+	<div v-else>
+		You are not allowed to see this text
+	</div>
+	
+	<div v-show="user.age > 16 && user.age < 18">
+		Enter your parents names:
+		<input type="text">
+	</div>
+	
+	
+	<template v-if="user.age > 18">
+		<p>Paragraph 1</p>
+		<p>Paragraph 2</p>
+		<p>Paragraph 3</p>
+	</template>
+		
+	
+</div>
+
+<script src="./node_modules/vue/dist/vue.js"></script>
+
+<script>
+
+	var app = new Vue({
+		el: '#application',
+		data: {
+			user: {
+				name: "John",
+				age: 25
+			}
+		}
+	});
+
+</script>
+
+
+</body>
+</html>

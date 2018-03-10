@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<div id="app">
+	<user-logo user-name="John Snow"></user-logo>
+	<user-logo user-name="John Doe"></user-logo>
+	<user-logo v-bind:user-name="user1"></user-logo>
+	<user-logo :user-name="user2"></user-logo>
+</div>
+
+
+<script src="./node_modules/vue/dist/vue.js"></script>
+<script>
+	Vue.component("user-logo", {
+		template: '<div><img src="http://placeimg.com/100/100"> {{ userName }}</div>',
+		props: ['userName']
+	});
+
+	var app = new Vue({
+		el: "#app",
+		data: {
+			user1: "John Travlota",
+			user2: "Pamela Andersson"
+		}
+	});
+</script>
+</body>
+</html>

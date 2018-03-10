@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+<div id="application">
+	
+	<table>
+		
+		<tr>
+			<th>#</th>
+			<th>Time</th>
+			<th>Subject</th>
+		</tr>
+		<tr v-for="(subject, index) in items">
+			<td>{{ index + 1 }}.</td>
+			<td>{{ subject.time }}</td>
+			<td>{{ subject.title }}</td>
+		</tr>
+		
+	</table>
+	
+	<div>
+		Enter time:
+		<input type="text" id="time" v-model="time">
+	</div>
+	<div>
+		Enter Subject:
+		<input type="text" id="subject" v-model="subject">
+		<button @click="addSubject">Add Subject</button>
+	</div>
+	
+	
+	<div>
+		<span v-for="x in 50">{{ x }}</span>
+	</div>
+	
+	<ul>
+		<template v-for="subject in items">
+			<li>{{subject.time}}</li>
+			<li>{{subject.title}}</li>
+		</template>
+	</ul>
+	
+</div>
+
+<script src="./node_modules/vue/dist/vue.js"></script>
+
+<script>
+
+	var app = new Vue({
+		el: '#application',
+		data: {
+			items: [
+				{title: "English", time: "8.00 - 8.40"},
+				{title: "Maths", time: "8.50 - 9.30"},
+				{title: "Biology", time: "9.40 - 10.20"},
+				{title: "Phisics", time: "10.30 - 11.10"},
+				{title: "Chemistry", time: "11.20 - 12.00"}
+			],
+			time: "",
+			subject: ""
+		},
+		methods: {
+			addSubject: function() {
+				this.items.push({
+					time: this.time,
+					title: this.subject
+				});
+				this.time = "";
+				this.subject = "";
+			}
+		}
+	});
+
+</script>
+
+
+</body>
+</html>
